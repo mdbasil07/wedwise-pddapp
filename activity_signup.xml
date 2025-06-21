@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Top-right floral image -->
+    <ImageView
+        android:id="@+id/topFloral"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/floral_top"
+        android:scaleType="fitEnd"
+        android:contentDescription="Decorative floral image at top right" />
+
+    <!-- Bottom-left floral image -->
+    <ImageView
+        android:id="@+id/bottomFloral"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/floral_bottom"
+        android:scaleType="fitStart"
+        android:contentDescription="Decorative floral image at bottom left" />
+
+    <!-- Create an account Text -->
+    <TextView
+        android:id="@+id/textCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
+
+    <!-- Main container for form fields -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textCreateAccount"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical">
+
+        <!-- Name Field -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_person_signup"
+                android:layout_marginTop="3dp"
+                android:contentDescription="Person icon"
+                app:tint="#FF9800" />
+
+            <EditText
+                android:id="@+id/editName"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/name_hint"
+                android:textColorHint="#FFC58A"
+                android:background="@android:color/transparent"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:minHeight="48dp"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Email Field -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_email"
+                android:layout_marginTop="3dp"
+                android:contentDescription="Email icon"
+                app:tint="#FF9800" />
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/email_hint"
+                android:textColorHint="#FFC58A"
+                android:background="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:minHeight="48dp"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Password Field -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_lock"
+                android:layout_marginTop="3dp"
+                android:contentDescription="Password icon"
+                app:tint="#FF9800" />
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/password_hint"
+                android:textColorHint="#FFC58A"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:minHeight="48dp"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Confirm Password Field -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_lock"
+                android:layout_marginTop="3dp"
+                android:contentDescription="Confirm password icon"
+                app:tint="#FF9800" />
+
+            <EditText
+                android:id="@+id/editConfirmPassword"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/confirm_password_hint"
+                android:textColorHint="#FFC58A"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:minHeight="48dp"
+                android:padding="12dp" />
+
+            <ImageView
+                android:id="@+id/passwordVisibility"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_eye"
+                android:layout_gravity="center_vertical"
+                android:padding="12dp"
+                android:contentDescription="Toggle password visibility" />
+        </LinearLayout>
+
+        <!-- Remember me and Forgot password -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp">
+
+            <CheckBox
+                android:id="@+id/checkboxRemember"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:buttonTint="#FF9800" />
+
+            <TextView
+                android:id="@+id/rememberMeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Remember me"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <!-- Sign Up Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/orange_button"
+            android:text="SIGN UP"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <!-- Already have an account -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+                android:text="Login"
+                android:textColor="#FF9800"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

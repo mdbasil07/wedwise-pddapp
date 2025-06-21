@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Budget Input Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#E8F5E8">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="💰 Set Your Wedding Budget"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <EditText
+                    android:id="@+id/budgetInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter total budget (₹)"
+                    android:inputType="numberDecimal"
+                    android:padding="15dp"
+                    android:textSize="18sp"
+                    android:textColor="#2E7D32"
+                    android:textColorHint="#81C784"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Budget Summary Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#E3F2FD">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="📊 Budget Summary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/totalBudgetDisplay"
+                    android:text="Total Budget: ₹0"
+                    android:textSize="16sp"
+                    android:textColor="#1565C0"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/totalSpentDisplay"
+                    android:text="Total Spent: ₹0"
+                    android:textSize="16sp"
+                    android:textColor="#D32F2F"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/remainingBudgetDisplay"
+                    android:text="Remaining: ₹0"
+                    android:textSize="16sp"
+                    android:textColor="#388E3C"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Selected Items Card - Add this after Budget Summary Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/selectedItemsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#E8F5E8">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="✅ Selected Items"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="200dp">
+
+                    <LinearLayout
+                        android:id="@+id/selectedItemsContainer"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </ScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Budget Allocation Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#FFF3E0">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="⚙️ Customize Budget Allocation"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#F57C00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Venue Allocation -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/allocation_item_bg"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:text="🏛️ Venue:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:textColor="#E91E63"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/venuePercentageInput"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="35"
+                        android:inputType="number"
+                        android:text="35"
+                        android:textAlignment="center"
+                        android:textColor="#E91E63"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:text="%"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E91E63"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/venueBudgetAmount"
+                        android:text="₹0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textColor="#E91E63"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Catering Allocation -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/allocation_item_bg"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:text="🍽️ Catering:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:textColor="#FF5722"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/cateringPercentageInput"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="25"
+                        android:inputType="number"
+                        android:text="25"
+                        android:textAlignment="center"
+                        android:textColor="#FF5722"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:text="%"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FF5722"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/cateringBudgetAmount"
+                        android:text="₹0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textColor="#FF5722"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Photography Allocation -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/allocation_item_bg"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:text="📸 Photography:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:textColor="#9C27B0"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/photoPercentageInput"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="15"
+                        android:inputType="number"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="#9C27B0"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:text="%"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#9C27B0"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/photoBudgetAmount"
+                        android:text="₹0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textColor="#9C27B0"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Decor Allocation -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/allocation_item_bg"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:text="🌸 Décor:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:textColor="#673AB7"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/decorPercentageInput"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="10"
+                        android:inputType="number"
+                        android:text="10"
+                        android:textAlignment="center"
+                        android:textColor="#673AB7"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:text="%"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#673AB7"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/decorBudgetAmount"
+                        android:text="₹0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textColor="#673AB7"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Other Allocation -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/allocation_item_bg"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:text="🎵 Other:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:textColor="#795548"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/otherPercentageInput"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="15"
+                        android:inputType="number"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="#795548"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:text="%"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#795548"
+                        android:textStyle="bold"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/otherBudgetAmount"
+                        android:text="₹0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textColor="#795548"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Venue Recommendations -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#FCE4EC">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="🏛️ Recommended Venues"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#C2185B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/venueContainer"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Catering Recommendations -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#FBE9E7">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="🍽️ Recommended Catering"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#D84315"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/cateringContainer"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Photography Recommendations -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#F3E5F5">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="📸 Recommended Photography"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#7B1FA2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/photoContainer"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Decor Recommendations -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#EDE7F6">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="🌸 Recommended Décor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#512DA8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/decorContainer"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Other Recommendations -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#EFEBE9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:text="🎵 Other Recommendations"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#5D4037"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/otherContainer"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
